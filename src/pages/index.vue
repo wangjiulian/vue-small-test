@@ -3,28 +3,43 @@
 		<div class="index-left">
 			<div class="index-left-block">
 				<h2>全部产品</h2>
-				<div v-for="product in productList">
+				<template v-for="product in productList">
 					<h3>{{ product.title }}</h3>
 					<ul>
 						<li v-for="item in product.list">
-							<a v-bind:hert='item.url'>{{item.name}}</a>
+							<a :hert='item.url'>{{item.name}}</a>
 							<span v-if="item.hot" class="hot-tag">HOT</span>
 						</li>
 					</ul>
-				</div>
+					<div v-if="!product.last" class="hr"></div>
+				</template>
 			</div>
-			<div class="index-left-block">
+			<div class="index-left-block lasttest-news">
 				<h2>最新消息</h2>
 				<ul>
 					<li v-for="item in newsList">
 						<a :herf="item.url" class="new-item">{{item.title}}</a>
 					</li>
 				</ul>
-				
-
 			</div>
 		</div>
-		<div class="index-right"></div>
+		<div class="index-right">
+			<div class="index-board-list">
+				<div class="index-board-item" v-for="(item,index) in boardList"
+				:class="[{'index-last' : index % 2 !==0}, 'index-board-' + item.id]">
+					<div class="index-board-item-inner">
+						<h2>{{ item.title }}</h2>
+						<p>{{ item.description }}</p>
+						<div class="index-board-button">
+							<a class="button">立即购买</a>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+
+		</div>
 
 	</div>
 </template>
@@ -36,9 +51,41 @@
 
 export default{
 
+created: function(){
+  
+},
 data (){
 	return{
-
+	  boardList: [
+        {
+          title: '开放产品',
+          description: '开放产品是一款开放产品',
+          id: 'car',
+          toKey: 'analysis',
+          saleout: false
+        },
+        {
+          title: '品牌营销',
+          description: '品牌营销帮助你的产品更好地找到定位',
+          id: 'earth',
+          toKey: 'count',
+          saleout: false
+        },
+        {
+          title: '使命必达',
+          description: '使命必达快速迭代永远保持最前端的速度',
+          id: 'loud',
+          toKey: 'forecast',
+          saleout: true
+        },
+        {
+          title: '勇攀高峰',
+          description: '帮你勇闯高峰，到达事业的顶峰',
+          id: 'hill',
+          toKey: 'publish',
+          saleout: false
+        }
+      ],	
      productList: {
         pc: {
           title: 'PC产品',
@@ -86,7 +133,28 @@ data (){
           ]
         }
       },
-       newsList: []
+       newsList: [
+            {
+            	id:3,
+            	title:'新闻条目1新闻条目1新闻条目1新闻条目1',
+            	url:'http://warcraft.com'
+
+            },
+            {
+            	id:4,
+            	title:'新闻条目1新闻条目1新闻条目1新闻条目1',
+            	url:'http://warcraft.com'
+
+            },
+            {
+            	id:5,
+            	title:'新闻条目1新闻条目1新闻条目1新闻条目1',
+            	url:'http://warcraft.com'
+
+            }
+
+
+       ]
 
 	}
 }
@@ -95,10 +163,6 @@ data (){
 
 
 </script>
-
-
-
-
 
 <style scoped >
 
@@ -113,12 +177,6 @@ data (){
 	float: left;
 	width: 300px;
 	text-align: left;
-}
-
-.index-right {
-	float: right;
-	width: 900px;
-	text-align: right;
 }
 
 .index-left-block{
@@ -147,6 +205,56 @@ data (){
 .index-left-block li{
 	padding: 5px;
 }
+
+.hot-tag {
+	background: red;
+	color: white;
+}
+
+.index-right {
+	float: right;
+	width: 900px;
+	background: #fff;
+	
+}
+
+.index-board-item {
+	float: left;
+	width: 400px;
+	background: #fff;
+	box-shadow: 0 0 1px #ddd;
+	padding: 20px;
+	margin-right: 20px;	
+	margin-bottom: 20px;
+}
+
+.index-board-item-inner{
+	min-height: 125px;
+	padding-left: 120px;
+}
+
+.index-last{
+	margin-right: 0;
+}
+
+.index-board-button {
+  margin-top: 20px;
+}
+
+
+.index-board-car .index-board-item-inner{
+  background: url(../assets/images/1.png) no-repeat;
+}
+.index-board-loud .index-board-item-inner{
+  background: url(../assets/images/2.png) no-repeat;
+}
+.index-board-earth .index-board-item-inner{
+  background: url(../assets/images/3.png) no-repeat;
+}
+.index-board-hill .index-board-item-inner{
+  background: url(../assets/images/4.png) no-repeat;
+}
+
 
 	
 </style>

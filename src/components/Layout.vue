@@ -42,7 +42,7 @@ export default{
 
 <style >
 
-* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -76,6 +76,13 @@ footer, header, hgroup, menu, nav, section {
 	
 ol,ul{
 	list-style: none;
+}
+
+.button {
+	  background: #4fc08d;
+	  color: #fff;
+	  display: inline-block;
+	  padding: 10px 20px;
 }
 
 .app-head{

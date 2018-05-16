@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import Router from 'vue-router'
+import VueResource from 'vue-resource'
 import Layout from './components/layout'
 import indexPage from './pages/index'
 
@@ -11,8 +12,9 @@ import indexPage from './pages/index'
 // Vue.config.productionTip = false
 
 Vue.use(Router)
-
+Vue.use(VueResource)
 let router = new Router({
+  mode: 'history',
   routes: [{
     path: '/',
     component: indexPage
