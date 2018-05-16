@@ -24,6 +24,7 @@
 			</div>
 		</div>
 		<div class="index-right">
+      <slide-show :slides="slides" :inv="invTime"></slide-show>
 			<div class="index-board-list">
 				<div class="index-board-item" v-for="(item,index) in boardList"
 				:class="[{'index-last' : index % 2 !==0}, 'index-board-' + item.id]">
@@ -45,17 +46,47 @@
 </template>
 
 <script>
-	
-
+	import slideShow from '../components/slideShow'
 
 
 export default{
-
 created: function(){
+  this.$http.get('api/getNewsList').
+  then((res) => {
+  this.newsList = res.data
+  },(err) => {
+console.log(err)
+  })
   
+},
+components:{
+slideShow
 },
 data (){
 	return{
+     invTime: 2000,
+     slides: [
+        {
+          src: require('../assets/slideShow/pic1.jpg'),
+          title: 'xxx1',
+          href: 'detail/analysis'
+        },
+        {
+          src: require('../assets/slideShow/pic2.jpg'),
+          title: 'xxx2',
+          href: 'detail/count'
+        },
+        {
+          src: require('../assets/slideShow/pic3.jpg'),
+          title: 'xxx3',
+          href: 'http://xxx.xxx.com'
+        },
+        {
+          src: require('../assets/slideShow/pic4.jpg'),
+          title: 'xxx4',
+          href: 'detail/forecast'
+        }
+      ],
 	  boardList: [
         {
           title: '开放产品',
@@ -134,27 +165,26 @@ data (){
         }
       },
        newsList: [
-            {
-            	id:3,
-            	title:'新闻条目1新闻条目1新闻条目1新闻条目1',
-            	url:'http://warcraft.com'
-
-            },
-            {
-            	id:4,
-            	title:'新闻条目1新闻条目1新闻条目1新闻条目1',
-            	url:'http://warcraft.com'
-
-            },
-            {
-            	id:5,
-            	title:'新闻条目1新闻条目1新闻条目1新闻条目1',
-            	url:'http://warcraft.com'
-
-            }
-
-
-       ]
+       {
+      "id": 1,
+      "title": "新闻条目1新闻条目1新闻条目1新闻条目1",
+      "url": "http://starcraft.com"
+    },
+    {
+      "id": 2,
+      "title": "新闻条目2新闻条目2新闻条目2新闻条目2",
+      "url": "http://warcraft.com"
+    },
+    {
+      "id": 3,
+      "title": "新闻条3新闻条3新闻条3",
+      "url": "http://overwatch.com"
+    },
+    {
+      "id": 4,
+      "title": "新闻条4广告发布",
+      "url": "http://hearstone.com"
+    }]
 
 	}
 }
@@ -253,6 +283,14 @@ data (){
 }
 .index-board-hill .index-board-item-inner{
   background: url(../assets/images/4.png) no-repeat;
+}
+
+.new-item {
+  display: inline-block;
+  width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
