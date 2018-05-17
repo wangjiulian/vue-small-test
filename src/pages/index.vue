@@ -46,17 +46,20 @@
 </template>
 
 <script>
+import Vue from 'vue'
 	import slideShow from '../components/slideShow'
-
-
+  import axiosPlugin from '../axios';
+  Vue.use(axiosPlugin);
+  
 export default{
 created: function(){
-  this.$http.get('api/getNewsList').
-  then((res) => {
-  this.newsList = res.data
-  },(err) => {
-console.log(err)
-  })
+//   this.$http.post('http://192.168.1.9:8989/test_ele',{}).
+//   then((res) => {
+//     alert(res.data)
+//   // this.newsList = res.data
+//   },(err) => {
+// console.log(err)
+//   })
   
 },
 components:{
@@ -187,7 +190,24 @@ data (){
     }]
 
 	}
-}
+},
+mounted(){
+
+//            this.$fetch('/api/v2/movie/top250')
+//                .then((response) => {
+//                    console.log(response)
+//                })
+        //    this.$httpa.post('test_ele/menu_sort',{
+               
+        //    })
+        //        .then(function (response) {
+        //            console.log("获取成功"+ response);
+        //    })
+        //        .catch(function (error) {
+        //            console.log("获取失败"+JSON.stringify(error));
+        //        })
+
+        },
 
 }
 
