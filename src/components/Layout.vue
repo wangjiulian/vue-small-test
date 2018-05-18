@@ -5,11 +5,11 @@
 			    <img src="../assets/logo.png">
 			    <div class="head-nav">
 					<ul class="nav-list">
-						<li>登录</li>
+						<li @click="logClick">登录</li>
 						<li class="nav-line">|</li>
-						<li>注册</li>
+						<li @click="regClick">注册</li>
 						<li class="nav-line">|</li>
-						<li>关于</li>
+						<li @click="aboutClick">关于</li>
 					</ul>
 			    </div>
 			 </div>   
@@ -20,8 +20,17 @@
 		    </keep-alive>
 		</div>
 		<div class="app-foot">
-			<p>@2018 fishenal AVERY </p>
+			<p>@2018 fishenal Avery </p>
 		</div>	
+		<my-dialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')">
+				<log-form></log-form>
+		</my-dialog>
+		<my-dialog :is-show="isShowRegDialog" @on-close="closeDialog('isShowRegDialog')">
+				<p>11111</p>
+		</my-dialog>
+		<my-dialog :is-show="isShowAboDialog" @on-close="closeDialog('isShowAboDialog')">
+				 <p>本报告在调研数据的基础上，采用定性与定量相结合的方式深入分析了专车市场发展的驱动因素与阻碍因素、专车市场背后的产业格局、专车企业的竞争格局、用户对专车市场的依赖程度、专车对其他交通工具运力的补充效应等，通过这五个章节的研究反映专车市场的发展态势和面临的问题。报告力求客观、深入、准确地反映中国专车市场发展情况，为政府、企事业单位和社会各界提供决策依据。 </p>
+		</my-dialog>
 	</div>
 </template>
 
@@ -30,8 +39,37 @@
 <script type="text/javascript">
 
 import indexPage from '../pages/index'
+import dialog from '../components/base/dialog'
+import logForm from '../components/logform'
 
 export default{
+	components:{
+		MyDialog:dialog,
+		logForm
+	},
+	data (){
+		return{
+			isShowLogDialog:false,
+			isShowRegDialog:false,
+			isShowAboDialog:false
+		}
+	},
+	methods:{
+		closeDialog (attr){
+			this[attr] = false
+		},
+		logClick (){
+			this.isShowLogDialog = true
+		},
+		regClick (){
+			this.isShowRegDialog = true
+
+		},
+		aboutClick (){
+			this.isShowAboDialog = true
+
+		}
+	}
      
 
 }
@@ -128,7 +166,35 @@ ol,ul{
 	margin-top: 30px;
 }
 
+.g-form {
 
+}
+.g-form-line {
+  padding: 15px 0;
+}
+.g-form-label {
+  width: 100px;
+  font-size: 16px;
+  display: inline-block;
+}
+.g-form-input {
+  display: inline-block;
+}
+.g-form-input input {
+  height: 30px;
+  width: 200px;
+  line-height: 30px;
+  vertical-align: middle;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
+.g-form-btn {
+  padding-left: 100px;
+}
+.g-form-error {
+  color: red;
+  padding-left: 15px;
+}
 
 
 </style>

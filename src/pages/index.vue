@@ -46,14 +46,11 @@
 </template>
 
 <script>
-import Vue from 'vue'
-	import slideShow from '../components/slideShow'
-  import axiosPlugin from '../axios';
-  Vue.use(axiosPlugin);
-  
+	import slideShow from '../components/slideShow' 
+
 export default{
 created: function(){
-//   this.$http.post('http://192.168.1.9:8989/test_ele',{}).
+//   this.$http.post('http://192.168.1.29:8989/test_ele/menu_sort',{id:11}).
 //   then((res) => {
 //     alert(res.data)
 //   // this.newsList = res.data
