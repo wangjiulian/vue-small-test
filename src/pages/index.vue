@@ -50,13 +50,13 @@
 
 export default{
 created: function(){
-//   this.$http.post('http://192.168.1.29:8989/test_ele/menu_sort',{id:11}).
-//   then((res) => {
-//     alert(res.data)
-//   // this.newsList = res.data
-//   },(err) => {
-// console.log(err)
-//   })
+  this.$http.post('http://192.168.1.66:70/info/business',{sort_id:11}).
+  then((res) => {
+    alert(res.data)
+  // this.newsList = res.data
+  },(err) => {
+console.log(err)
+  })
   
 },
 components:{

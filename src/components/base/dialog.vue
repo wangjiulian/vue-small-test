@@ -1,10 +1,14 @@
 <template>
 	<div id="dialog-wrap">
 		<div class="dialog-cover" v-if="isShow" @click="closeMySelf"></div>
-			<div class="dialog-content" v-if="isShow">
+
+		   <transition name='drop'>
+		   	<div class="dialog-content" v-if="isShow">
 				<div class="dialog-close" @click="closeMySelf">X</div>
 				<slot></slot>
 			</div>		
+		   </transition>
+			
 	</div>
 </template>
 
@@ -74,6 +78,25 @@ export default{
 .dialog-close:hover {
   color: #4fc08d;
 }
+
+
+.drop-enter {
+	transform: translateY(-500px);
+}
+
+.drop-enter-active {
+
+	transition: all .5s ease;
+}
+
+.drop-leave-active {
+  transform: translateY(-500px);
+  transition: all .3s ease;
+
+}
+
+
+
 	
 
 </style>
