@@ -85,7 +85,6 @@ export default{
 }
 
 .drop-enter-active {
-
 	transition: all .5s ease;
 }
 
