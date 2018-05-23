@@ -4,16 +4,18 @@
 		   <div class="product_board">
 		   	 <img :src="productIcon">
 		  <ul>
-		  	<router-link v-for="item in products" :to="{path:item.path}" tag='li' active-class='active' >
-		  		{{item.name}}
-		  	</router-link>
-		  
+		   <router-link v-for="item in products" :to="{ path: item.path }" :key="item.id" tag="li" active-class="active">
+            {{ item.name }}
+          </router-link>
+        </ul>
 		  </ul>
-			
 		   </div>
 		</div>
 		<div class="detail_right">
-			
+			<keep-alive>
+        <router-view>
+        </router-view>
+      </keep-alive>
 		</div>
 	</div>
 
@@ -100,7 +102,7 @@ data () {
 }
 
 .product_board li.active,
-.product-board li:hover {
+.product_board li:hover {
 	background: #4fc08d;
 	color: #fff;
 }	
@@ -108,5 +110,74 @@ data () {
 .product-board li a {
   display: block;
 }
+
+.sales-board-intro h2 {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.sales-board-intro p {
+  background: #f7fcff;
+  padding: 10px 20px;
+  color: #999;
+  line-height: 1.8;
+}
+
+.sales-board-form {
+  padding: 30px 20px;
+  font-size: 14px;
+}
+
+.sales-board-line {
+  clear: both;
+  padding-bottom: 20px;
+}
+.sales-board-line-left {
+  display: inline-block;
+  width: 100px;
+}
+.sales-board-line-right {
+  display: inline-block;
+  width: 75%;
+}
+
+.sales-board-des h2 {
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.sales-board-des h3 {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px 0 10px 0;
+}
+
+.sales-board-des p {
+  line-height: 1.6;
+}
+
+.sales-board-des li {
+  padding: 5px 0;
+}
+
+.sales-board-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.sales-board-table th {
+  background: #4fc08d;
+  color: #fff;
+
+}
+
+.sales-board-table td {
+  border: 1px solid #f0f2f5;
+  padding: 15px;
+
+}
+
+
+
 
 </style>

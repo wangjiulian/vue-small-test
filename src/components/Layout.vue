@@ -2,7 +2,9 @@
 	<div>
 		<div class="app-head">
 			<div class="app-head-inner">
+				<router-link :to="{path:'/'}">
 			    <img src="../assets/logo.png">
+			    </router-link>
 			    <div class="head-nav">
 					<ul class="nav-list">
 						<li @click="logClick">登录</li>
@@ -112,8 +114,28 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 	
-ol,ul{
-	list-style: none;
+
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .button {
